@@ -1,11 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: MyString
-  name: MyString
-  upcoming_shows_id: 1
+  twitter_handle: MyString
 
 two:
-  email: MyString
-  name: MyString
-  upcoming_shows_id: 1
+  twitter_handle: MyString
