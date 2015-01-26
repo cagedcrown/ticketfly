@@ -11,32 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126162943) do
+ActiveRecord::Schema.define(version: 20150126210243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.string   "body"
-    t.integer  "rating"
     t.integer  "user_id"
+    t.integer  "venue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "name"
-    t.integer  "watchlist_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "twitter_handle"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
-  create_table "watchlists", force: :cascade do |t|
-    t.string   "venue"
-    t.string   "location"
-    t.string   "artists"
-    t.string   "date"
+  create_table "venues", force: :cascade do |t|
+    t.integer  "songkick_venue_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "venue_id"
+    t.integer  "upvote"
+    t.integer  "downvote"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
