@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
 			user.name = auth["info"]["nickname"]
 		end
 	end
+
+	def index
+		@user = current_user.id
+	end
 end
