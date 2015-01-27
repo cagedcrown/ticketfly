@@ -45,7 +45,7 @@ end
 
 gem 'omniauth-twitter'
 
-gem 'activerecord-reputation-system', '~> 3.0.1', require: 'reputation_system'
+gem 'activerecord-reputation-system', '~> 3.0.1'
 
 gem 'pry'
 
