@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 			user.provider = auth.provider
 			user.uid = auth.uid
 			user.name = auth.info.name
+			user.twitter_handle = auth.info.nickname
 			user.save
 		end
 	end
@@ -16,9 +17,9 @@ class User < ActiveRecord::Base
 	def self.create_with_omniauth(auth)
 		create! do |user|
 			user.provider = auth["provider"]
-			# binding.pry
 			user.uid = auth["uid"]
 			user.name = auth["info"]["name"]
+			user.twitter_handle = auth["info"]["nickname"]
 		end
 	end
 
