@@ -1,0 +1,6 @@
+<em>
+	<%= venue.user.name %>
+	<%= pluralize venue.reputation_value_for(:votes).to_i, "vote" %>
+	<%= link_to "up", vote_venue_path(venue, type: "up"), method: "post" %>
+	<%= link_to "down", vote_venue_path(venue, type: "down"), method: "post" %>
+</em>
