@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20150127154526) do
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "venue_id"
+    t.string   "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "body"
   end
 
   create_table "users", force: :cascade do |t|
