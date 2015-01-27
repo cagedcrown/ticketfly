@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>VenuMenu</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title>VenuMenu</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
-<div id="container">
-	<div id="user_nav">
-		<% if current_user %>
-		Welcome, <%= current_user.name %>!
+	<div id="container">
+		<div id="user_nav">
+			<% if current_user %>
+			Welcome, <%= current_user.name %>!
 			<%= link_to "Sign out", signout_path %>
-		<% else %>
+			<% else %>
 			<%= link_to "Sign in with Twitter", "/auth/twitter" %>
-		<% end %>
+			<% end %>
+		</div>
 	</div>
-</div>
-
-<%= yield %>
-
+	<div class="content">
+		<h3 id="venues"></h3>
+		<%= yield %>
+	</div>
 </body>
 </html>
