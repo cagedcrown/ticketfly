@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   resources :venues, only: [:index, :show]
 
-  get '/auth/twitter/callback',  to: 'session#create'
+  get '/auth/twitter/callback', to: 'sessions#create'
   get '/auth/failure', to: redirect('/')
-  get '/signout',  to: 'session#destroy', as: 'signout'
+  get '/signout' => 'sessions#destroy', :as => :signout
 
 end
