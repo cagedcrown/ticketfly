@@ -1,31 +1,26 @@
 class VenuesController < ApplicationController
 
-	def index
-		
-	end
+  before_action :set_venue, only: [:show]
 
-	def create
-		
-	end
+  def index
+    @venues = Venue.all
+  end
 
-	def new
-		
-	end
+  def show
+  end
 
-	def show
-		
-	end
+  def new
+  end
 
-	def edit
-		
-	end
+  def edit
+  end
 
-	def update
-		
-	end
+  def create
+  end
 
-	def destroy
-		
-	end
-	
+  def update
+  end
+
+  def destroy
+  end
 end
