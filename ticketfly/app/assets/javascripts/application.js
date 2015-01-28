@@ -8,9 +8,6 @@
 
 $(document).ready(function(){
 // http://songkick.com
-//1. hide the dropdown menu
-  // $("#venue-select").hide();
-
   //2. when the user submits a form
   $("#search").on("submit", function( event ){
     event.preventDefault(); 
@@ -32,41 +29,14 @@ $(document).ready(function(){
 });
 
 function displayResults( response, input ){
-  // populate the dropdown
   var apikey = "UuzY21WjoBgBxDEK";
-  // var dropdown = $("#venue-select");
-  // dropdown.empty();
-  // make first option "Venues matching keyword"
-  // dropdown.append("<option>Venues matching "+ input +"</option>")
   $.getJSON("http://api.songkick.com/api/3.0/search/venues.json?query=" + input + "&apikey=" + apikey + "&jsoncallback=?", function(data){
   var venues = data['resultsPage']['results']['venue'];
   for (var i=0; i < venues.length; i++) {
     $("#venues").append('<div class="displayName"><li>' + venues[i]['displayName'] + '</li></div>');
  }
 });
-  // for( var i = 0; i < response.length; i++){
-  //   var venue = response.map[i];
-  //   dropdown.append("<option value='" + venue.displayName + "'></option>");
-  // }
-
-  // show the dropdown
-  // dropdown.show();
 }
-
-// //3. When the user chooses a dropdown item
-// $("#venue-select").on("change", function(){
-//   var id = $(":selected").val();
-//   var url = "http://api.songkick.com/api/3.0/search/venues.json?query=" + songkick_venue_id;
-//   // ask the api for info about item
-//   $.getJSON(url, function( response ){
-//     console.log( response );
-//     // populate the title
-//     $("#venue-detail").html("<h2>"+ response.songkick_venue_name +"</h2>");
-//     // populate the image
-//     $("#venue-detail").append("<img src='"+ response.songkick_venue_img +"'>");
-//   });
-  
-// });
 
 //___________________________________________________________________________
 
