@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   def index
-    @comments = Comment.all
+    @comments = Comment.find_with_reputation(:votes, :all, order: "votes desc")
   end
 
   def show
@@ -26,6 +26,13 @@ class CommentsController < ApplicationController
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def vote
+    value = params[:type] == "up" ? 1 : -1
+    @comment = Comment.find(params[:id])
+    @comment.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to :back, notice: "Thank you for voting"
   end
 
   def update
