@@ -24,25 +24,33 @@ $(document).ready(function(){
       dataType: "jsonp",
       method: "GET",
       success: function(response){
-        console.log(response);
+        // console.log(response);
+        createDropdown(response, input);
       },
     });
   });
 });
 
-function createDropdown( response, keyword ){
+function createDropdown( response, input ){
   // populate the dropdown
+  var apikey = "UuzY21WjoBgBxDEK";
   var dropdown = $("#venue-select");
   dropdown.empty();
   // make first option "Venues matching keyword"
-  dropdown.append("<option>Venues matching "+ keyword +"</option>")
-  for( var i = 0; i < response.Search.length; i++){
-    var venue = response.Search[i];
-    dropdown.append("<option value='"+ venue.displayName +"'></option>");
-  }
+  // dropdown.append("<option>Venues matching "+ input +"</option>")
+  $.getJSON("http://api.songkick.com/api/3.0/search/venues.json?query=" + input + "&apikey=" + apikey + "&jsoncallback=?", function(data){
+  var venues = data['resultsPage']['results']['venue'];
+  for (var i=0; i < venues.length; i++) {
+    $("#venues").append('<div class="displayName"><li>' + venues[i]['displayName'] + '</li></div>');
+ }
+});
+  // for( var i = 0; i < response.length; i++){
+  //   var venue = response.map[i];
+  //   dropdown.append("<option value='" + venue.displayName + "'></option>");
+  // }
 
   // show the dropdown
-  dropdown.show();
+  // dropdown.show();
 }
 
 // //3. When the user chooses a dropdown item
