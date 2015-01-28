@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   resources :users do 
     resources :comments
-    resources :votes
+  end
+
+  resources :comments do
+  	member { post :vote }
   end
 
   resources :venues, only: [:index, :show]
