@@ -35,7 +35,7 @@ function createDropdown( response, keyword ){
   var dropdown = $("#venue-select");
   dropdown.empty();
   // make first option "Venues matching keyword"
-  dropdown.append("<option>Venues matching "+ keyword[resultsPage] +"</option>")
+  dropdown.append("<option>Venues matching "+ keyword +"</option>")
   for( var i = 0; i < response.Search.length; i++){
     var venue = response.Search[i];
     dropdown.append("<option value='"+ venue.displayName +"'></option>");

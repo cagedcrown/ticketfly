@@ -1,9 +1,7 @@
-require 'pry'
-
 class User < ActiveRecord::Base
 	has_many :comments, dependent: :destroy
 
-	has_reputation :votes, source: {reputation: :votes, of: :haikus}, aggregated_by: :sum
+	has_reputation :votes, source: {reputation: :votes, of: :comments}, aggregated_by: :sum
 
 	def self.from_omniauth(auth)
 		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
