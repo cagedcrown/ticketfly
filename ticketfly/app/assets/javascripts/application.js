@@ -9,7 +9,7 @@
 $(document).ready(function(){
 // http://songkick.com
 //1. hide the dropdown menu
-  $("#venue-select").hide();
+  // $("#venue-select").hide();
 
   //2. when the user submits a form
   $("#search").on("submit", function( event ){
@@ -25,17 +25,17 @@ $(document).ready(function(){
       method: "GET",
       success: function(response){
         // console.log(response);
-        createDropdown(response, input);
+        displayResults(response, input);
       },
     });
   });
 });
 
-function createDropdown( response, input ){
+function displayResults( response, input ){
   // populate the dropdown
   var apikey = "UuzY21WjoBgBxDEK";
-  var dropdown = $("#venue-select");
-  dropdown.empty();
+  // var dropdown = $("#venue-select");
+  // dropdown.empty();
   // make first option "Venues matching keyword"
   // dropdown.append("<option>Venues matching "+ input +"</option>")
   $.getJSON("http://api.songkick.com/api/3.0/search/venues.json?query=" + input + "&apikey=" + apikey + "&jsoncallback=?", function(data){
