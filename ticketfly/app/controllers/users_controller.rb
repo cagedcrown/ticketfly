@@ -7,4 +7,8 @@ class UsersController < ApplicationController
     	redirect_to new_user_path, notice: "Please log in"
   	end
 	end
+
+	def home
+		render "home"
+	end
 end
