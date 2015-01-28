@@ -1,8 +1,8 @@
 <h1><%= link_to "Add a Comment", new_comment_path %></h1>
 
 <% @comments.each do |comment| %>
-	<%= comment.title %>
-	<%= comment.venue_name %>
-	<%= comment.user_name %>
-	<%= comment.body %>
+	<h1><%= comment.title %></h1>
+	<h2><%= comment.venue_name %></h2>
+	<h3><%= comment.user_name %></h3>
+	<p><%= comment.body %></p>
 <% end %>	

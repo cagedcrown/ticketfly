@@ -1,15 +1,6 @@
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
-// about supported directives.
-//
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
@@ -39,20 +30,20 @@ $(document).ready(function(){
   });
 });
 
-// function createDropdown( response, keyword ){
-//   // populate the dropdown
-//   var dropdown = $("#venue-select");
-//   dropdown.empty();
-//   // make first option "Venues matching keyword"
-//   dropdown.append("<option>Venues matching "+ keyword +"</option>")
-//   for( var i = 0; i < response.Search.length; i++){
-//     var venue = response.Search[i];
-//     dropdown.append("<option value='"+ venue.displayName +"'></option>");
-//   }
+function createDropdown( response, keyword ){
+  // populate the dropdown
+  var dropdown = $("#venue-select");
+  dropdown.empty();
+  // make first option "Venues matching keyword"
+  dropdown.append("<option>Venues matching "+ keyword[resultsPage] +"</option>")
+  for( var i = 0; i < response.Search.length; i++){
+    var venue = response.Search[i];
+    dropdown.append("<option value='"+ venue.displayName +"'></option>");
+  }
 
-//   // show the dropdown
-//   dropdown.show();
-// }
+  // show the dropdown
+  dropdown.show();
+}
 
 // //3. When the user chooses a dropdown item
 // $("#venue-select").on("change", function(){
