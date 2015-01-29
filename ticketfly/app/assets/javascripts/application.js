@@ -6,6 +6,7 @@
 //= require turbolinks
 //= require_tree .
 
+<<<<<<< HEAD
 $(document).ready(function(){
 // http://songkick.com
   //2. when the user submits a form
@@ -39,6 +40,13 @@ function displayResults( response, input ){
     var state = venues[i]['metroArea']['state']['displayName'];
     var street = venues[i]['metroArea', 'street'];
     var metroArea = venues[i]['metroArea', 'phone'];
+=======
+var apikey = "UuzY21WjoBgBxDEK";
+var baseUrl = "http://api.songkick.com/api/3.0/search/venues.json?query=";
+var form = $('#search');
+var query = $('#search-venue');
+// var result = $("#results");
+>>>>>>> bada965c4d634aa3dd7293c290b2d2853058b123
 
     var resultContainer = $("<li></li>");
     resultContainer.append($("<h2></h2>").addClass("displayName").html(displayName));

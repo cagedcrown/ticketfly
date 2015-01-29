@@ -8,6 +8,7 @@
 	<link rel="stylesheet" src="assets/stylesheets/application.css">
 </head>
 <body>
+<<<<<<< HEAD
 	<div id="container">
 		<div id="user_nav">
 			<% if current_user %>
@@ -24,5 +25,36 @@
 	</div>
 	<link src="assets/js/jquery.js">
   <link src="assets/js/application.js">
+=======
+
+	<header>
+		<div class="logo"> 
+		<span id="svg"> <%= link_to image_tag( 'logo.svg' ), root_path %></span> </div>
+		<form class="search" >
+		  		<input class="phold" type="search" placeholder="search venue"> <br>
+		  		<input class="hide" type="submit" value="go">
+		</form>
+		<nav class="buttons">
+		
+					<% if current_user %>
+					<a href="#"> <%= current_user.name %> </a>
+					<%= link_to "Sign out", signout_path %>
+					<% else %>
+					<%= link_to "Sign in with Twitter", "/auth/twitter" %>
+					<% end %>
+					<div>
+				<a href='#'>Comments</a>
+				
+			</div>
+			
+		</nav>
+	</header>
+
+
+<!-- 	<div class="content">
+		<h3 id="venues"></h3>
+		<%= yield %>
+	</div> -->
+>>>>>>> bada965c4d634aa3dd7293c290b2d2853058b123
 </body>
 </html>
