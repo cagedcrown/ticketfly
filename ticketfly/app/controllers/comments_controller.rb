@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = Comment.find(params[:id])
   end
 
   def create
@@ -19,7 +20,7 @@ class CommentsController < ApplicationController
     @user = current_user
     @comment.user_name = @user.name
     if @comment.save
-      redirect_to root_path
+      redirect_to comments_path
     end
   end
 
@@ -31,14 +32,12 @@ class CommentsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to root_path, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
-      else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    @comment = Comment.find(params[:id])
+
+    if @comment.update(params[:comment])
+      redirect_to comments_path
+    else
+      render "edit"
     end
   end
 
