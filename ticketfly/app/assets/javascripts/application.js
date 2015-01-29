@@ -26,9 +26,11 @@ $(document).ready(function(){
         displayResults(response, input);
       },
     });
+    this.reset();
   });
 });
 function displayResults( response, input ){
+  $(".venue-results").empty();
   var apikey = "UuzY21WjoBgBxDEK";
   $.getJSON("http://api.songkick.com/api/3.0/search/venues.json?query=" + input + "&apikey=" + apikey + "&jsoncallback=?", function(data){
   var venues = data['resultsPage']['results']['venue'];
@@ -41,8 +43,7 @@ function displayResults( response, input ){
     var street = venues[i]['metroArea', 'street'];
     var metroArea = venues[i]['metroArea', 'phone'];
 
-
-    var resultContainer = $("<div></div>");
+    var resultContainer = $("<div class='venue-results'></div>");
     resultContainer.append($("<h2></h2>").addClass("displayName").html(displayName));
     resultContainer.append($("<p></p>").addClass("city").html(city));
     resultContainer.append($("<p></p>").addClass("state").html(state));
@@ -54,7 +55,6 @@ function displayResults( response, input ){
  }
 });
 }
-
 //___________________________________________________________________________
 
 

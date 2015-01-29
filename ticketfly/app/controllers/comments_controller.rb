@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = Comment.find(params[:id])
   end
 
   def create
@@ -19,7 +20,7 @@ class CommentsController < ApplicationController
     @user = current_user
     @comment.user_name = @user.name
     if @comment.save
-      redirect_to root_path
+      redirect_to comments_path
     end
   end
 
@@ -32,9 +33,10 @@ class CommentsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to root_path, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
+    @comment = Comment.find_by_id(params[:id])
+      if @comment.update_attributes(comment_params)
+        format.html { redirect_to comments_path, notice: 'Comment was successfully updated.' }
+        format.json { render :index, status: :ok, location: @comment }
       else
         format.html { render :edit }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -59,6 +61,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:user_name, :venue_name, :body, :title)
+      params.require(:comment).permit(:body, :title, :venue_name, :user_name, :city_and_state)
     end
 end
