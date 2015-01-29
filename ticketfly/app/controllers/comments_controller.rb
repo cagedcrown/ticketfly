@@ -32,12 +32,15 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment = Comment.update(comment_params)
-
-    if @comment.update_attributes(params[:comment])
-      redirect_to comments_path
-    else
-      render "edit"
+    respond_to do |format|
+    @comment = Comment.find_by_id(params[:id])
+      if @comment.update_attributes(comment_params)
+        format.html { redirect_to comments_path, notice: 'Comment was successfully updated.' }
+        format.json { render :index, status: :ok, location: @comment }
+      else
+        format.html { render :edit }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
     end
   end
 
