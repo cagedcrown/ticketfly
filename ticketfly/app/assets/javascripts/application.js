@@ -27,7 +27,6 @@ $(document).ready(function(){
     });
   });
 });
-
 function displayResults( response, input ){
   var apikey = "UuzY21WjoBgBxDEK";
   $.getJSON("http://api.songkick.com/api/3.0/search/venues.json?query=" + input + "&apikey=" + apikey + "&jsoncallback=?", function(data){
@@ -37,10 +36,16 @@ function displayResults( response, input ){
     var displayName = venues[i]['displayName'];
     var website = venues[i]['website'];
     var city = venues[i]['city']['uri', 'displayName'];
+    var state = venues[i]['metroArea']['state']['displayName'];
+    var street = venues[i]['metroArea', 'street'];
+    var metroArea = venues[i]['metroArea', 'phone'];
 
     var resultContainer = $("<li></li>");
     resultContainer.append($("<h2></h2>").addClass("displayName").html(displayName));
     resultContainer.append($("<p></p>").addClass("city").html(city));
+    resultContainer.append($("<p></p>").addClass("state").html(state));
+    resultContainer.append($("<p></p>").addClass("street").html(street));
+    resultContainer.append($("<p></p>").addClass("metroArea").html(metroArea));
     resultContainer.append($("<a></a>").addClass("website").attr('href', website).html(website));
 
     $(".results-list").append(resultContainer);
