@@ -30,8 +30,8 @@ $(document).ready(function(){
   });
 });
 function displayResults( response, input ){
-  $(".venue-results").empty("");
-  $(".content").empty("");
+  $(".venue-results").empty();
+  $(".content").empty();
   var apikey = "UuzY21WjoBgBxDEK";
   $.getJSON("http://api.songkick.com/api/3.0/search/venues.json?query=" + input + "&apikey=" + apikey + "&jsoncallback=?", function(data){
   var venues = data['resultsPage']['results']['venue'];
@@ -43,11 +43,12 @@ function displayResults( response, input ){
     var state = venues[i]['metroArea']['state']['displayName'];
     var street = venues[i]['metroArea', 'street'];
     var metroArea = venues[i]['metroArea', 'phone'];
+    var venueHeader = displayName + " (" + city + ", " + state + ")"; 
 
     var resultContainer = $("<div class='venue-results'></div>");
-    resultContainer.append($("<h2></h2>").addClass("displayName").html(displayName));
-    resultContainer.append($("<p></p>").addClass("city").html(city));
-    resultContainer.append($("<p></p>").addClass("state").html(state));
+    resultContainer.append($("<h2></h2>").addClass("displayName").html(venueHeader));
+    // resultContainer.append($("<p></p>").addClass("city").html(city));
+    // resultContainer.append($("<p></p>").addClass("state").html(state));
     resultContainer.append($("<p></p>").addClass("street").html(street));
     resultContainer.append($("<p></p>").addClass("metroArea").html(metroArea));
     resultContainer.append($("<a></a>").addClass("website").attr('href', website).html(website));
