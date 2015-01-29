@@ -19,7 +19,7 @@ var apikey = "UuzY21WjoBgBxDEK";
 var baseUrl = "http://api.songkick.com/api/3.0/search/venues.json?query=";
 var form = $('#search');
 var query = $('#search-venue');
-var result = $("#results");
+// var result = $("#results");
 
 form.on("submit", search);
 

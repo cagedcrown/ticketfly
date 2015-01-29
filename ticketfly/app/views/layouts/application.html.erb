@@ -7,19 +7,34 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
-	<div id="container">
-		<div id="user_nav">
-			<% if current_user %>
-			Welcome, <%= current_user.name %>!
-			<%= link_to "Sign out", signout_path %>
-			<% else %>
-			<%= link_to "Sign in with Twitter", "/auth/twitter" %>
-			<% end %>
-		</div>
-	</div>
-	<div class="content">
+
+	<header>
+		<div class="logo"> 
+		<span id="svg"> <%= link_to image_tag( 'logo.svg' ), root_path %></span> </div>
+		<form class="search" >
+		  		<input class="phold" type="search" placeholder="search venue"> <br>
+		  		<input class="hide" type="submit" value="go">
+		</form>
+		<nav class="buttons">
+		
+					<% if current_user %>
+					<a href="#"> <%= current_user.name %> </a>
+					<%= link_to "Sign out", signout_path %>
+					<% else %>
+					<%= link_to "Sign in with Twitter", "/auth/twitter" %>
+					<% end %>
+					<div>
+				<a href='#'>Comments</a>
+				
+			</div>
+			
+		</nav>
+	</header>
+
+
+<!-- 	<div class="content">
 		<h3 id="venues"></h3>
 		<%= yield %>
-	</div>
+	</div> -->
 </body>
 </html>
