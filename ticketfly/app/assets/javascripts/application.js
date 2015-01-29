@@ -32,8 +32,18 @@ function displayResults( response, input ){
   var apikey = "UuzY21WjoBgBxDEK";
   $.getJSON("http://api.songkick.com/api/3.0/search/venues.json?query=" + input + "&apikey=" + apikey + "&jsoncallback=?", function(data){
   var venues = data['resultsPage']['results']['venue'];
+  var results = $(".content").append($("<ul></ul>").addClass("results-list"));
   for (var i=0; i < venues.length; i++) {
-    $("#venues").append('<div class="displayName"><li>' + venues[i]['displayName'] + '</li></div>');
+    var displayName = venues[i]['displayName'];
+    var website = venues[i]['website'];
+    var city = venues[i]['city']['uri', 'displayName'];
+
+    var resultContainer = $("<li></li>");
+    resultContainer.append($("<h2></h2>").addClass("displayName").html(displayName));
+    resultContainer.append($("<p></p>").addClass("city").html(city));
+    resultContainer.append($("<a></a>").addClass("website").attr('href', website).html(website));
+
+    $(".results-list").append(resultContainer);
  }
 });
 }
