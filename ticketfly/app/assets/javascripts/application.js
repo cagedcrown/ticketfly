@@ -42,7 +42,7 @@ function displayResults( response, input ){
     var metroArea = venues[i]['metroArea', 'phone'];
 
 
-    var resultContainer = $("<div></div>");
+    var resultContainer = $("<div class='venue-results'></div>");
     resultContainer.append($("<h2></h2>").addClass("displayName").html(displayName));
     resultContainer.append($("<p></p>").addClass("city").html(city));
     resultContainer.append($("<p></p>").addClass("state").html(state));
