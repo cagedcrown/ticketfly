@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
 
-    if @comment.update(params[:comment])
+    if @comment.update_attributes(params[:comment])
       redirect_to comments_path
     else
       render "edit"
@@ -58,6 +58,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:user_name, :venue_name, :body, :title, :city_and_state)
+      params.require(:comment).permit(:body, :title, :venue_name, :user_name, :city_and_state)
     end
 end
