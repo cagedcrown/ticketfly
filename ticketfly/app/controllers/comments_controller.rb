@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment = Comment.find(params[:id])
+    @comment = Comment.update(comment_params)
 
     if @comment.update_attributes(params[:comment])
       redirect_to comments_path
