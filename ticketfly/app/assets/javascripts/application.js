@@ -30,7 +30,8 @@ $(document).ready(function(){
   });
 });
 function displayResults( response, input ){
-  $(".venue-results").empty();
+  $(".venue-results").empty("");
+  $(".content").empty("");
   var apikey = "UuzY21WjoBgBxDEK";
   $.getJSON("http://api.songkick.com/api/3.0/search/venues.json?query=" + input + "&apikey=" + apikey + "&jsoncallback=?", function(data){
   var venues = data['resultsPage']['results']['venue'];
