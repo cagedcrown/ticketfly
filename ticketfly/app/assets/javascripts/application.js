@@ -30,6 +30,8 @@ $(document).ready(function(){
   });
 });
 function displayResults( response, input ){
+  $(".venue-results").empty();
+  $(".content").empty();
   var apikey = "UuzY21WjoBgBxDEK";
   $.getJSON("http://api.songkick.com/api/3.0/search/venues.json?query=" + input + "&apikey=" + apikey + "&jsoncallback=?", function(data){
   var venues = data['resultsPage']['results']['venue'];
@@ -41,10 +43,19 @@ function displayResults( response, input ){
     var state = venues[i]['metroArea']['state']['displayName'];
     var street = venues[i]['metroArea', 'street'];
     var metroArea = venues[i]['metroArea', 'phone'];
+<<<<<<< HEAD
     var venueHeader = displayName + " (" + city + ", " + state + ")";
 
     var resultContainer = $("<div class='venue-results'></div>");
     resultContainer.append($("<h2></h2>").addClass("displayName").html(venueHeader));
+=======
+    var venueHeader = displayName + " (" + city + ", " + state + ")"; 
+
+    var resultContainer = $("<div class='venue-results'></div>");
+    resultContainer.append($("<h2></h2>").addClass("displayName").html(venueHeader));
+    // resultContainer.append($("<p></p>").addClass("city").html(city));
+    // resultContainer.append($("<p></p>").addClass("state").html(state));
+>>>>>>> ccfd5bfa3be4e47e18b477ae6a98b342f2eaf3ca
     resultContainer.append($("<p></p>").addClass("street").html(street));
     resultContainer.append($("<p></p>").addClass("metroArea").html(metroArea));
     resultContainer.append($("<a></a>").addClass("website").attr('href', website).html(website));
@@ -53,34 +64,4 @@ function displayResults( response, input ){
  }
 });
 }
-
 //___________________________________________________________________________
-
-
-// $.getJSON("http://api.songkick.com/api/3.0/search/venues.json?query=" + query + "&apikey=" + apikey + "&jsoncallback=?", function(data){
-//  var venues = data['resultsPage']['results']['venue'];
-//  for (var i=0;i < venues.length; i++) {
-//    $("#venues").append('<div class="displayName"><li>' + venues[i]['displayName']+'</li></div>');
-//  }
-// });
-
-// function searchCallback(data) {
-//  // result.append('Found ' + data.total + ' results for ' + query);
-//  var venues = data.resultsPage;
-//  $.each(venues, function(index, venue) {
-//   result.append(venue.results.venue.displayName);
-// });
-
-//  $(".submit_buttons").on("submit",function(event){
-//   event.preventDefault();
-//   // var img_src = this.nextSibling.nextSibling.getAttribute('src');
-//   // var movie_id = this.firstChild.getAttribute("id");
-//   // var img_id = $(this).closest("img");
-//   // $.ajax({
-//   //   type: "POST",
-//   //   url: "/venues/",
-//   //   data: {venue_id: venue_id,
-//   //     img_src: img_src
-//   //   }
-// });
-// };
