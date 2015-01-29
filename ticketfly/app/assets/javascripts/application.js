@@ -47,8 +47,6 @@ function displayResults( response, input ){
 
     var resultContainer = $("<div class='venue-results'></div>");
     resultContainer.append($("<h2></h2>").addClass("displayName").html(venueHeader));
-    // resultContainer.append($("<p></p>").addClass("city").html(city));
-    // resultContainer.append($("<p></p>").addClass("state").html(state));
     resultContainer.append($("<p></p>").addClass("street").html(street));
     resultContainer.append($("<p></p>").addClass("metroArea").html(metroArea));
     resultContainer.append($("<a></a>").addClass("website").attr('href', website).html(website));
