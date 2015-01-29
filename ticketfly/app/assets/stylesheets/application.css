@@ -30,7 +30,6 @@
  	float: left;
  	width: 33%;
     height: auto;
-
  }
 
 #svg {
@@ -44,11 +43,11 @@
 
  .search{
  	display: inline-block;
- 	width: 33.33%;
  	font-size: 18px;
  	line-height: 1.5;
  	vertical-align: bottom;
  	font-style: none;
+ 	width:33.33%;
  }
  .buttons a {
  	float: right;
@@ -67,6 +66,7 @@
  }
 
  input[type=search] {
+ 	/*clear: both;*/
  	float: center;
  	padding: 5px;
  	/*border-style: solid;*/
@@ -117,9 +117,18 @@
  	color: $secondaryColour;
  }
 
- .phold {  
+#venue-search {  
  	color: #ffffff; 
  }
+
+.results-list {
+	text-align: center;
+	list-style: none;
+}
+
+.content {
+	margin-top: 3em;
+}
 
 input[type=submit].hide,
 button[type=submit].hide {
@@ -132,4 +141,9 @@ input::-webkit-input-placeholder {
    color: rgba(255, 255, 255, .75);
 }
 
+.displayName {
+	text-align: center;
+	text-decoration: none;
+	list-style: none;
+}
 
